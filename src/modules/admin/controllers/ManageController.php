@@ -5,8 +5,24 @@ namespace effsoft\eff\module\user\modules\admin\controllers;
 use effsoft\eff\EffController;
 use effsoft\eff\module\passport\models\UserModel;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
 
 class ManageController extends EffController{
+
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ]
+        ];
+    }
 
     public function actionIndex(){
         $query = UserModel::find()->orderBy(['_id' => SORT_DESC]);
