@@ -26,7 +26,6 @@ class ManageController extends EffController{
 
     public function actionIndex(){
         
-        return $this->render('//user/admin/manage/index',[
-        ]);
+        return $this->render('//user/admin/manage/index',[]);
     }
 }
